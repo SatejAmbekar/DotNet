@@ -1,0 +1,28 @@
+@using EMP.Entities;
+
+<h1>Employee List</h1>
+<hr/>
+
+@{
+    List<Employee> employees=(List<Employee>)TempData["allEmployees"];
+}
+    <table class="table table-success table-striped">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+        @{
+        foreach(Employee emp in employees){
+        <tr>
+            <td>@emp.FirstName</td> 
+            <td>@emp.LastName</td>
+            <td><button class="btn btn-primary"><a class="link-dark" href="/employees/details/@emp.Id">Details</a> </button> | <a href="/employees/edit/@emp.Id">Edit</a> | <a href="/employees/delete/@emp.Id">Delete</a></td>
+        </tr>
+        }
+        }
+        
+
+</table>
+<hr/>
+<a href="/Employees/Register">New Employee</a>
